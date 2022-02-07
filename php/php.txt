@@ -1,0 +1,20 @@
+<?php
+			$Fname=$_POST["Fname"];
+			$Lname=$_POST["Lname"];
+			$Email=$_POST["Email"];
+			$Address=$_POST["Address"];
+			$Phone=$_POST["Phone"];
+			$Password=$_POST["Password"];
+		$con=mysqli_connect("localhost","root","");
+			if (!$con)
+			die("Not connected".mysqli_connect_errno());
+			//else echo"Successfully<br>";
+			mysqli_select_db($con,"instructioncompany")or die (mysql_error($con));
+			
+			$statment="insert into registration (Fname,Lname,Email,Address,Phone,Password) values('$Fname','$Lname','$Email','$Address','$Phone','$Password')";
+				$flag=mysqli_query($con,$statment);
+				if (!$flag) die("Eroor".mysqli_error($con)); 
+				else  header( "Location:http://localhost/w/Home%20Page.html" );  
+		mysqli_close($con);
+
+?>
